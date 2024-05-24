@@ -1,4 +1,17 @@
-const init = (word) => {
+import inquierer from 'inquirer';
+
+
+const init = async () => {
+
+    // Get user input from inquierer module
+    const userInput = await inquierer.prompt({
+        type: 'input',
+        name: 'answer',
+        message: 'What is the phrase?'
+    });
+
+    // Assign the user input to word
+    let word = userInput.answer;
 
     // remove symbols, spaces and keep alphaneumeric characters
     word = word.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
@@ -19,8 +32,8 @@ const init = (word) => {
     }
     console.log(`${word} is a palindrome`);
 }
-const str = "Do geese see God?"
-init(str);
+
+init();
 
 //"Do geese see God?"
 
